@@ -14,17 +14,23 @@ public partial class Visualizer : System.Web.UI.Page
         String path = @"C:\Users\livieric\Documents\GitHub Projects\visualdata\Resources\sampledata.xlsx";
         foreach (var worksheet in Workbook.Worksheets(path))
         {
+            //We have the rows for each segment
             foreach (var row in worksheet.Rows)
             {
+                //Get the cells in every row
                 foreach (var cell in row.Cells)
                 {
+                    //Make sure the cell has content
                     if(cell != null)
                     {
+                        //Do stuff - format a JSON object for all of the data in a spreadsheet? 
                         Label newLabel = new Label();
-                        newLabel.Text = cell.Text;
+                        newLabel.Text = cell.Text + " ";
                         form1.Controls.Add(newLabel);
                     }
                 }
+                //Visual break between rows
+                form1.Controls.Add(new LiteralControl("<br>"));
             }
         }    
     }

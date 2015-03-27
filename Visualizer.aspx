@@ -11,7 +11,6 @@
     <div>
         <h1> Welcome to the Excel Digital Visualizer </h1>
     </div>
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
     </form>
 </body>
 </html>
