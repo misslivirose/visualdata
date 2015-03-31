@@ -10,6 +10,7 @@ using Excel;
 
 public partial class Visualizer : System.Web.UI.Page
 {
+    public ExcelObject _graph;
     protected void Page_Load(object sender, EventArgs e){
         String path = @"C:\Users\livieric\Documents\GitHub Projects\visualdata\Resources\sampledata.xlsx";
         foreach (var worksheet in Workbook.Worksheets(path))
@@ -17,7 +18,7 @@ public partial class Visualizer : System.Web.UI.Page
             int numberOfColumns = worksheet.NumberOfColumns;
             int numberOfRows = worksheet.Rows.Length-1;
 
-            ExcelObject _graph = new ExcelObject(numberOfColumns, numberOfRows);
+             _graph = new ExcelObject(numberOfColumns, numberOfRows);
             /**
              * First, we take the first row and separate out our column headers
              * Assume that the workbook data is formatted properly

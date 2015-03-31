@@ -46,8 +46,8 @@ public class ExcelObject
         }
         return "Unable to convert row";
     }
-    // Given a row, return formatted as a JSON object
-    public string RowToJSON(Row row)
+    // Return the entire graph as a JSON object
+    public string GraphToJSON()
     {
         return "Function not implemented yet";
     }
