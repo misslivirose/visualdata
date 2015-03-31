@@ -38,9 +38,11 @@ public class ExcelObject
             String _JSON = "{" + '\n';
             for(int i = 0; i < columns.Length; i++)
             {
-                _JSON += ("\"" + columns[i] + "\"" + ":\t");
+                _JSON += ("\t\"" + columns[i] + "\"" + ":\t");
                 _JSON += ("\"" + rows[rowNumber].Cells[i].Text + "\",\n");
             }
+            _JSON += "}";
+            return _JSON;
         }
         return "Unable to convert row";
     }
