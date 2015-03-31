@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Script.Serialization;
+using System.Diagnostics;
 using Excel;
 
 public partial class Visualizer : System.Web.UI.Page
@@ -36,7 +37,7 @@ public partial class Visualizer : System.Web.UI.Page
             {
                 _graph.rows[j] = worksheet.Rows[j+1];
             }
-            Console.WriteLine("Finished adding in data");
+            Debug.WriteLine("Finished adding in data");
 
             /**
              *  Objects in rows n > 1 are a pair {data point 1, data point 2} where 
@@ -50,7 +51,7 @@ public partial class Visualizer : System.Web.UI.Page
                 Label _temp = new Label();
                 _temp.Text = "Data Point: " + r.Cells[0].Text + " has value: " + r.Cells[1].Text;
                 form1.Controls.Add(_temp);
-                form1.Controls.Add(new LiteralControl("<div/>"));
+                form1.Controls.Add(new LiteralControl("<div></div>"));
             }
 
         }
