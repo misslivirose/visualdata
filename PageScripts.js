@@ -1,4 +1,5 @@
-﻿function alertFromJSON()
+﻿function alertFromJSON(jsonString)
 {
-    alert("Hi");
+    var string = JSON.stringify(jsonString);
+    alert(string);
 }

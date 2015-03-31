@@ -67,8 +67,8 @@ public class ExcelObject
         {
             _return =  _return + s + ',';
         }
-        _return = _return.TrimEnd(',');
-        _return = _return + "]\n}";
+        _return = _return.TrimEnd(',') + "]\n}";
+        Debug.WriteLine(_return);
         return _return;
     }
 }

@@ -6,12 +6,15 @@
 <head runat="server">
     <title></title>
     <script src ="PageScripts.js"></script>
+    <script>
+        var string = JSON.stringify(<%=_graphJSON%>);
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
         <h1> Welcome to the Excel Digital Visualizer </h1>
-        <button onclick="alertFromJSON()">Click Me!</button>
+        <button onclick="alertFromJSON(string)">Click Me!</button>
     </div>
     </form>
 </body>
