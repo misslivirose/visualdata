@@ -1,1 +1,4 @@
-﻿
+﻿function alertFromJSON()
+{
+    alert("Hi");
+}

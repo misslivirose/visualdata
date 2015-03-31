@@ -39,7 +39,6 @@ public partial class Visualizer : System.Web.UI.Page
             {
                 _graph.rows[j] = worksheet.Rows[j+1];
                 String _test = _graph.RowToJSON(j);
-                Debug.WriteLine(_test);
             }
             Debug.WriteLine("Finished adding in data");
 

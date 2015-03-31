@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Diagnostics;
 using Excel;
 
 /// <summary>
@@ -48,21 +49,26 @@ public class ExcelObject
                 }
             }
             _JSON += "}";
-            return "\"" + _JSON + "\"";
+            Debug.WriteLine(_JSON);
+            return _JSON;
         }
         return "Unable to convert row";
     }
     // Return the entire graph as a JSON formatted object
     public string GraphToJSON()
     {
-        String _JSON = "{" + '\n';
+        String[] elements = new String[rows.Length];
         for (int i = 0; i < rows.Length; i++ )
         {
-            String _rowJSON = this.RowToJSON(i);
-            _JSON += ("\t" + _rowJSON + "\n");
-
+            elements[i] = this.RowToJSON(i).Trim('\"');
         }
-        _JSON += "}";
-        return "\"" + _JSON + "\"";
+        String _return = "{\n\t\"rows\":\t[";
+        foreach(String s in elements)
+        {
+            _return =  _return + s + ',';
+        }
+        _return = _return.TrimEnd(',');
+        _return = _return + "]\n}";
+        return _return;
     }
 }
