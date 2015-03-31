@@ -40,6 +40,12 @@ public class ExcelObject
             {
                 _JSON += ("\t\"" + columns[i] + "\"" + ":\t");
                 _JSON += ("\"" + rows[rowNumber].Cells[i].Text + "\",\n");
+
+                if(i == columns.Length-1)
+                {
+                    _JSON = _JSON.TrimEnd('\n');
+                    _JSON = _JSON.TrimEnd(',');
+                }
             }
             _JSON += "}";
             return "\"" + _JSON + "\"";
@@ -49,6 +55,14 @@ public class ExcelObject
     // Return the entire graph as a JSON formatted object
     public string GraphToJSON()
     {
-        return "\"boop\"";
+        String _JSON = "{" + '\n';
+        for (int i = 0; i < rows.Length; i++ )
+        {
+            String _rowJSON = this.RowToJSON(i);
+            _JSON += ("\t" + _rowJSON + "\n");
+
+        }
+        _JSON += "}";
+        return "\"" + _JSON + "\"";
     }
 }
