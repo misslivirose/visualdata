@@ -11,6 +11,7 @@ using Excel;
 public partial class Visualizer : System.Web.UI.Page
 {
     public ExcelObject _graph;
+    public string _graphJSON;
     protected void Page_Load(object sender, EventArgs e){
         String path = @"C:\Users\livieric\Documents\GitHub Projects\visualdata\Resources\sampledata.xlsx";
         foreach (var worksheet in Workbook.Worksheets(path))
@@ -56,7 +57,7 @@ public partial class Visualizer : System.Web.UI.Page
                 form1.Controls.Add(_temp);
                 form1.Controls.Add(new LiteralControl("<div></div>"));
             }
-
+            _graphJSON = _graph.GraphToJSON();
         }
     }
 }

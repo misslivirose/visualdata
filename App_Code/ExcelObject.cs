@@ -42,13 +42,13 @@ public class ExcelObject
                 _JSON += ("\"" + rows[rowNumber].Cells[i].Text + "\",\n");
             }
             _JSON += "}";
-            return _JSON;
+            return "\"" + _JSON + "\"";
         }
         return "Unable to convert row";
     }
-    // Return the entire graph as a JSON object
+    // Return the entire graph as a JSON formatted object
     public string GraphToJSON()
     {
-        return "Function not implemented yet";
+        return "\"boop\"";
     }
 }
