@@ -10,21 +10,10 @@ using Excel;
 public class ExcelObject
 {
     public string[] columns {get; set;}
-    public List<Row> rows { get; set; }
+    public Row[] rows { get; set; }
 
 	public ExcelObject(int _numColumns, int _numRows){
 		columns = new string [_numColumns];
-        rows = new List<Row>();
+        rows = new Row[_numRows];
 	}
-    /**
-     * Insert a row from the Excel spreadsheet into its ExcelObject type.
-     * Each row will be a separate entity to visualize.
-     **/
-    public int InsertRow(Row _rowToAdd){
-        if (_rowToAdd != null) {
-            rows.Add(_rowToAdd);
-            return 0;
-        }
-        return -1;
-    }
 }
