@@ -6,11 +6,16 @@
 <head runat="server">
     <title></title>
     <script src ="PageScripts.js"></script>
+    <!-- For drawing elements -->
     <script src ="three.min.js"></script>
+    <!-- For positional information from VR hardware -->
     <script src ="VRControls.js"></script>
+    <!-- Camera Rendering -->
     <script src ="VREffect.js"></script>
-    <script src="webvr-manager.js"></script>
+    <!-- Device Polyfill for browser API -->
     <script src ="webvr-pollyfill.js"></script>
+    <!-- VR enter/exit, consistency for webvr apps -->
+    <script src="webvr-manager.js"></script>
     <script>
         var string = JSON.stringify(<%=_graphJSON%>);
     </script>

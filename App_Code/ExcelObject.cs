@@ -36,15 +36,14 @@ public class ExcelObject
     {
         if (rowNumber < rows.Length)
         {
-            String _JSON = "{" + '\n';
+            String _JSON = "{";
             for(int i = 0; i < columns.Length; i++)
             {
-                _JSON += ("\t\"" + columns[i] + "\"" + ":\t");
-                _JSON += ("\"" + rows[rowNumber].Cells[i].Text + "\",\n");
+                _JSON += ("\"" + columns[i] + "\"" + ":");
+                _JSON += ("\"" + rows[rowNumber].Cells[i].Text + "\",");
 
                 if(i == columns.Length-1)
                 {
-                    _JSON = _JSON.TrimEnd('\n');
                     _JSON = _JSON.TrimEnd(',');
                 }
             }
@@ -62,12 +61,12 @@ public class ExcelObject
         {
             elements[i] = this.RowToJSON(i).Trim('\"');
         }
-        String _return = "{\n\t\"rows\":\t[";
+        String _return = "{\"rows\":[";
         foreach(String s in elements)
         {
             _return =  _return + s + ',';
         }
-        _return = _return.TrimEnd(',') + "]\n}";
+        _return = _return.TrimEnd(',') + "]}";
         Debug.WriteLine(_return);
         return _return;
     }

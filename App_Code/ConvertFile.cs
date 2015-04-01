@@ -13,6 +13,10 @@ public abstract class ConvertFile
     public static ExcelObject CreateFromFile(String path)
     {
         String _filePath = path;
+        if(ConvertFile.IsValidFile(_filePath))
+        {
+            Debug.WriteLine("Correct file format");
+        }
         worksheet _createFrom = Workbook.Worksheets(_filePath).ElementAt(0);
         ExcelObject _EOReturn = new ExcelObject(_createFrom.NumberOfColumns, _createFrom.Rows.Length-1);
 
@@ -30,5 +34,16 @@ public abstract class ConvertFile
         }
         Debug.WriteLine("Finished adding in data");
         return _EOReturn;
+    }
+    // This function checks if the file uploaded is valid
+    public static Boolean IsValidFile(String s)
+    {
+        // Check the file extension to match .xlsx
+        // Check if Excel.dll works with .xls
+        if(! s.EndsWith(".xlsx"))
+        {
+            return false;
+        }
+        return true;
     }
 }
