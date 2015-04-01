@@ -5,9 +5,9 @@ using System.Diagnostics;
 using System.Web;
 using Excel;
 
-/// <summary>
-/// Summary description for ConvertFile
-/// </summary>
+/// A helper class for manipulating Excel Spreadsheets
+/// This will include validation for file formatting in the future
+/// Date Created: 4/1/2015
 public abstract class ConvertFile
 {
     public static ExcelObject CreateFromFile(String path)

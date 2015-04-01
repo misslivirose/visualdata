@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,18 +13,19 @@ public partial class Visualizer : System.Web.UI.Page
 {
     public ExcelObject _graph;
     public string _graphJSON;
+    public string _path;
 
     // Called when the page is loaded. Do all setup here.
     protected void Page_Load(object sender, EventArgs e)
     {
-        Setup(); 
+        Setup();
     }
     // Create our ExcelObject from the file specified.
     // This will use the file from the page file picker.
     public void Setup()
     {
-        String path = @"C:\Users\livieric\Documents\GitHub Projects\visualdata\Resources\sampledata.xlsx";
-        _graph = ConvertFile.CreateFromFile(path);
+        _path = @"C:\Users\livieric\Documents\GitHub Projects\visualdata\Resources\sampledata.xlsx";
+        _graph = ConvertFile.CreateFromFile(_path);
         _graphJSON = _graph.GraphToJSON();
     }
     // A temporary method to display ExcelObject data on page.
@@ -37,5 +39,10 @@ public partial class Visualizer : System.Web.UI.Page
             form1.Controls.Add(_temp);
             form1.Controls.Add(new LiteralControl("<div></div>"));
         }
+    }
+    //Get the file from the user through the file control
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Debug.WriteLine("Not Yet Implemented");
     }
 }
