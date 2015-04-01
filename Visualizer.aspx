@@ -13,7 +13,9 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <h1> Welcome to the Excel Digital Visualizer </h1>
+        <h1> Welcome to the Excel Digital Visualizer</h1><br />
+            <asp:Label ID="Label1" runat="server" Text="Upload .xlsx file"></asp:Label><br />
+            <asp:FileUpload ID="FileUpload1" runat="server" /><br />
         <button onclick="alertFromJSON(string)">Click Me!</button>
     </div>
     </form>
