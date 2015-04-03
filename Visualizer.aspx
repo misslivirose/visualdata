@@ -5,7 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <script src ="PageScripts.js"></script>
+    <link rel="stylesheet" type ="text/css" href ="Styles.css" />
+    <script src ="Scripts\PageScripts.js"></script>
     <!-- For drawing elements -->
     <script src ="Scripts\three.min.js"></script>
     <!-- For positional information from VR hardware -->
@@ -26,10 +27,10 @@
         <h1> Welcome to the Excel Digital Visualizer</h1><br />
             <asp:Label ID="Label1" runat="server" Text="Upload .xlsx file"></asp:Label><br />
             <asp:FileUpload ID="FileUpload1" runat="server" />
-        <asp:Button ID="Button1" runat="server" Text="Go" OnClientClick="alertFromJSON(string)"/>
+        <asp:Button ID="Button1" runat="server" Text="Go" OnClientClick="PaintCanvas(); return false;"/>
         <br />
-        <button onclick="PaintCanvas()">Click Me!</button>
     </div>
+        <asp:Label ID="test" runat="server" Text="Label"></asp:Label>
     </form>
 </body>
 </html>
