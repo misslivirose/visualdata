@@ -1,9 +1,9 @@
 ﻿function alertFromJSON(string) {
 
-    
+  
 }
 
-function PaintCanvas() {
+function PaintCanvas(string) {
     var renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     document.body.appendChild(renderer.domElement);
@@ -20,9 +20,7 @@ function PaintCanvas() {
 
     // Create 3d objects based on the passed in data
 
-    var numObjects = numberOfCubes(4);
-
-        
+    var numObjects = numberOfCubes(string);
         // Position cube mesh
         for (var i = 0; i < numObjects; i++)
         {
@@ -40,10 +38,20 @@ function PaintCanvas() {
     } else {
         renderer.render(scene, camera);
     }
+
 }
 
-function numberOfCubes(jsonString)
-{
-    //Figure out how to parse JSON String
-    return 4;
+function numberOfCubes(string)
+{                                                                                                                          
+    var obj = $.parseJSON(string);
+    return obj.rows.length;
+
+    /** Note: Keep for notes on iterating through JSON
+    var data_set = obj.rows[0];
+
+    $.each($.parseJSON(string), function (key, value) {
+        count++;
+    });
+    
+    return count; **/
 }

@@ -6,6 +6,7 @@
 <head runat="server">
     <title></title>
     <link rel="stylesheet" type ="text/css" href ="Styles.css" />
+    <script src ="Scripts\jquery-2.1.3.js"></script>
     <script src ="Scripts\PageScripts.js"></script>
     <!-- For drawing elements -->
     <script src ="Scripts\three.min.js"></script>
@@ -27,7 +28,7 @@
         <h1> Welcome to the Excel Digital Visualizer</h1><br />
             <asp:Label ID="Label1" runat="server" Text="Upload .xlsx file"></asp:Label><br />
             <asp:FileUpload ID="FileUpload1" runat="server" />
-        <asp:Button ID="Button1" runat="server" Text="Go" OnClientClick="PaintCanvas(); return false;"/>
+        <asp:Button ID="Button1" runat="server" Text="Go" OnClientClick="PaintCanvas(string); return false;"/>
         <br />
     </div>
         <asp:Label ID="test" runat="server" Text="Label"></asp:Label>
