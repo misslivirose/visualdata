@@ -1,9 +1,4 @@
-﻿function alertFromJSON(string) {
-
-
-}
-
-function PaintCanvas(string) {
+﻿function PaintCanvas(string) {
     var renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
 
@@ -46,6 +41,21 @@ function PaintCanvas(string) {
         requestAnimationFrame(animate);
     }
     animate();
+    // Customize camera move behavior to use WASD for navigation
+    document.onkeydown = function (e) {
+        if (e.keyCode == 87) { // Move forward incrementally with W
+            camera.translateZ(-.1);
+        }
+        else if(e.keyCode == 65) { //Move left incrementally with A
+            camera.translateX(-.1);
+        }
+        else if (e.keyCode == 68) { //Move right incrementally with D
+            camera.translateX(.1);
+        }
+        else if (e.keyCode == 83) { //Move left incrementally with S
+            camera.translateZ(.1);
+        }
+    }
 }
 
 function numberOfCubes(obj) {
