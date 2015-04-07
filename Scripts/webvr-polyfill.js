@@ -283,13 +283,13 @@ MouseKeyboardPositionSensorVRDevice.prototype.getState = function() {
 
 MouseKeyboardPositionSensorVRDevice.prototype.onKeyDown_ = function(e) {
   // Track WASD and arrow keys.
-  if (e.keyCode == 38 || e.keyCode == 87) { // W or Up key.
+  if (e.keyCode == 38) { // W or Up key.
     this.animatePhi_(this.phi + KEY_SPEED);
-  } else if (e.keyCode == 39 || e.keyCode == 68) { // D or Right key.
+  } else if (e.keyCode == 39) { // D or Right key.
     this.animateTheta_(this.theta - KEY_SPEED);
-  } else if (e.keyCode == 40 || e.keyCode == 83) { // S or Down key.
+  } else if (e.keyCode == 40) { // S or Down key.
     this.animatePhi_(this.phi - KEY_SPEED);
-  } else if (e.keyCode == 37 || e.keyCode == 65) { // A or Left key.
+  } else if (e.keyCode == 37) { // A or Left key.
     this.animateTheta_(this.theta + KEY_SPEED);
   }
 };
