@@ -13,20 +13,18 @@ public partial class Visualizer : System.Web.UI.Page
 {
     public ExcelObject _graph;
     public string _graphJSON;
-    public string _path;
 
     // Called when the page is loaded. Do all setup here.
     protected void Page_Load(object sender, EventArgs e)
     {
-        Setup();
+        _graph = PreviousPage.CurrentObject;
+        _graphJSON = _graph.GraphToJSON();
     }
     // Create our ExcelObject from the file specified.
     // This will use the file from the page file picker.
     public void Setup()
     {
-        _path = @"C:\Users\livieric\Documents\GitHub Projects\visualdata\Resources\sampledata.xlsx";
-        _graph = ConvertFile.CreateFromFile(_path);
-        _graphJSON = _graph.GraphToJSON();
+
     }
     // A temporary method to display ExcelObject data on page.
     // This will be replaced by a later Three.JS visualization. 

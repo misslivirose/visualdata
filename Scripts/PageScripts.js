@@ -19,7 +19,7 @@
     // Create 3d objects based on the passed in data
     // Get the number of objects we have
     var obj = $.parseJSON(string);
-    var numObjects = numberOfCubes(obj);
+    var numObjects = obj.rows.length;;
     for (var i = 0; i < numObjects; i++) { 
         createCube(i, obj, scene);   
     }
@@ -52,14 +52,10 @@
         else if (e.keyCode == 68) { //Move right incrementally with D
             camera.translateX(.1);
         }
-        else if (e.keyCode == 83) { //Move left incrementally with S
+        else if (e.keyCode == 83) { //Move back incrementally with S
             camera.translateZ(.1);
         }
     }
-}
-
-function numberOfCubes(obj) {
-    return obj.rows.length;
 }
 
 function createCube(size, obj, scene)
