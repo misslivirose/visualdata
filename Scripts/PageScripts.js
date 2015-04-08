@@ -58,11 +58,13 @@
     }
 }
 
-function createCube(size, obj, scene)
+function createCube(index, obj, scene)
 {
-    var i = size;
+    var i = index;
     var data_set = obj.rows[i];
-    var geometry = new THREE.BoxGeometry(1, data_set.price * .01, 1);
+    var keys = Object.keys(data_set);
+    var yValKey = keys[1];
+    var geometry = new THREE.BoxGeometry(1, data_set[yValKey]* .01, 1);
     var material = new THREE.MeshNormalMaterial();
     var cube = new THREE.Mesh(geometry, material);
     cube.position.z = -10;

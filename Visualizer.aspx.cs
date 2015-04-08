@@ -26,21 +26,4 @@ public partial class Visualizer : System.Web.UI.Page
     {
 
     }
-    // A temporary method to display ExcelObject data on page.
-    // This will be replaced by a later Three.JS visualization. 
-    public void PrintToPage()
-    {
-        foreach (Row r in _graph.rows)
-        {
-            Label _temp = new Label();
-            _temp.Text = "Data Point: " + r.Cells[0].Text + " has value: " + r.Cells[1].Text;
-            form1.Controls.Add(_temp);
-            form1.Controls.Add(new LiteralControl("<div></div>"));
-        }
-    }
-    //Get the file from the user through the file control
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        Debug.WriteLine("Not Yet Implemented");
-    }
 }
