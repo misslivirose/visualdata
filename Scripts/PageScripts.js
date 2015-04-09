@@ -69,6 +69,8 @@ function createCube(index, obj, scene)
     var cube = new THREE.Mesh(geometry, material);
     cube.position.z = -10;
     cube.position.x = i * 2;
+    cube.position.y = 0;
     // Add cube mesh to your three.js scene
     scene.add(cube);
+
 }
