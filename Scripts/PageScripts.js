@@ -20,8 +20,21 @@
     // Get the number of objects we have
     var obj = $.parseJSON(string);
     var numObjects = obj.rows.length;;
-    for (var i = 0; i < numObjects; i++) { 
-        createCube(i, obj, scene);   
+    for (var i = 0; i < numObjects; i++) {
+        function createCube() {
+            var data_set = obj.rows[i];
+            var keys = Object.keys(data_set);
+            var yValKey = keys[1];
+            var geometry = new THREE.BoxGeometry(1, data_set[yValKey] * .01, 1);
+            var material = new THREE.MeshNormalMaterial();
+            var cube = new THREE.Mesh(geometry, material);
+            cube.position.z = -10;
+            cube.position.x = i * 2;
+            cube.position.y = 0;
+            // Add cube mesh to your three.js scene
+            scene.add(cube);
+        };
+        createCube(i);
     }
 
     if (vrmgr.isVRMode()) {
@@ -56,21 +69,4 @@
             camera.translateZ(.1);
         }
     }
-}
-
-function createCube(index, obj, scene)
-{
-    var i = index;
-    var data_set = obj.rows[i];
-    var keys = Object.keys(data_set);
-    var yValKey = keys[1];
-    var geometry = new THREE.BoxGeometry(1, data_set[yValKey]* .01, 1);
-    var material = new THREE.MeshNormalMaterial();
-    var cube = new THREE.Mesh(geometry, material);
-    cube.position.z = -10;
-    cube.position.x = i * 2;
-    cube.position.y = 0;
-    // Add cube mesh to your three.js scene
-    scene.add(cube);
-
 }
