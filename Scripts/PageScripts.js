@@ -30,7 +30,7 @@
             var cube = new THREE.Mesh(geometry, material);
             cube.position.z = -10;
             cube.position.x = i * 2;
-            cube.position.y = 0;
+            cube.position.y = (data_set[yValKey]*.01)/2;
             // Add cube mesh to your three.js scene
             scene.add(cube);
         };
