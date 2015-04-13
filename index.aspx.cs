@@ -24,6 +24,7 @@ public partial class _Default : System.Web.UI.Page
             _excelDB = ConvertFile.CreateFromFile(fullPath);
             File.Delete(fullPath);
             Server.Transfer("\\Visualizer.aspx");
+           
         }
         else
         {
