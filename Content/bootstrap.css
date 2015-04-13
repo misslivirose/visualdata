@@ -12,6 +12,9 @@ html {
 }
 body {
   margin: 0;
+  background:url('\\Resources\\MSB08_Buildings_01.jpg');
+  background-repeat:no-repeat;
+  background-size:cover;
 }
 article,
 aside,
