@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <%@ PreviousPageType VirtualPath="~/index.aspx" %> 
+    <%@ PreviousPageType VirtualPath="~/Default.aspx" %> 
     <link rel="stylesheet" type ="text/css" href ="\Content\Styles.css" />
     <script src ="Scripts\jquery-2.1.3.js"></script>
     <script src ="Scripts\PageScripts.js"></script>
