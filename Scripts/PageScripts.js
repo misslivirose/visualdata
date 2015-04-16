@@ -70,3 +70,17 @@
         }
     }
 }
+
+function onSelect(item)
+{
+    switch(item)
+    {
+        case "cities":
+            //call on sampledata.xlsx
+            break;
+        case "womenInTech":
+            //call on uploadsample.xlsx
+            break;
+    }
+
+}

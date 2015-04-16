@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -43,6 +44,22 @@ public partial class _Default : System.Web.UI.Page
         get
         {
             return _excelDB;
+        }
+    }
+    protected void something_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        ListItem selectedSample = something.SelectedItem;
+        String path = AppDomain.CurrentDomain.BaseDirectory;
+        switch(selectedSample.Value)
+        {
+            case("sampledata.xlsx"):
+                _excelDB = ConvertFile.CreateFromFile(path + "\\Resources\\sampledata.xlsx");
+                Server.Transfer("\\Visualizer.aspx");
+                break;
+            case("uploadsample.xlsx"):
+                _excelDB = ConvertFile.CreateFromFile(path + "\\Resources\\uploadsample.xlsx");
+                Server.Transfer("\\Visualizer.aspx");
+                break;
         }
     }
 }
