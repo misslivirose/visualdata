@@ -43,7 +43,7 @@
             textLabel.innerHTML = data_set[xValKey];
             textLabel.style.color = "0x020307";
             textLabel.style.top = "500px";
-            textLabel.style.left = "500px";
+            textLabel.style.left = 100 + 150*i + "px";
             document.body.appendChild(textLabel);
         };
         createCube(i);
