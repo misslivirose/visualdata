@@ -57,7 +57,7 @@ public partial class _Default : System.Web.UI.Page
                 Server.Transfer("\\Visualizer.aspx");
                 break;
             case("uploadsample.xlsx"):
-                _excelDB = ConvertFile.CreateFromFile(path + "\\Rdesources\\uploadsample.xlsx");
+                _excelDB = ConvertFile.CreateFromFile(path + "\\Resources\\uploadsample.xlsx");
                 Server.Transfer("\\Visualizer.aspx");
                 break;
         }
