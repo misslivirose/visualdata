@@ -24,16 +24,27 @@
         function createCube() {
             var data_set = obj.rows[i];
             var keys = Object.keys(data_set);
+            var xValKey = keys[0];
             var yValKey = keys[1];
             var geometry = new THREE.BoxGeometry(1, data_set[yValKey] * .01, 1);
             var material = new THREE.MeshNormalMaterial();
             var cube = new THREE.Mesh(geometry, material);
             cube.position.z = -10;
-            cube.position.x = i*2 - numObjects;
+            cube.position.x = i * 2 - numObjects;
             cube.position.y = (data_set[yValKey] * .01) / 2;
-
             // Add cube mesh to your three.js scene
             scene.add(cube);
+
+            // Add a text label over the scene for each bar
+            var textLabel = document.createElement('div');
+            textLabel.style.width = 100;
+            textLabel.style.height = 100;
+            textLabel.style.position = "absolute";
+            textLabel.innerHTML = data_set[xValKey];
+            textLabel.style.color = "0x020307";
+            textLabel.style.top = "500px";
+            textLabel.style.left = "500px";
+            document.body.appendChild(textLabel);
         };
         createCube(i);
     }
