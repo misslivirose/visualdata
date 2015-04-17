@@ -8,6 +8,7 @@
     var scene = new THREE.Scene();
     // Create a three.js camera
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.3, 10000);
+    camera.position.y = 1;
     var controls = new THREE.VRControls(camera);
 
     var effect = new THREE.VREffect(renderer);
@@ -36,6 +37,17 @@
         };
         createCube(i);
     }
+    // Create a plane for the ground
+    var planeMaterial = new THREE.MeshBasicMaterial(
+    {
+        color: 0xffffff, shading: THREE.FlatShading,
+        vertexColors: THREE.VertexColors
+    });
+    var plane = new THREE.Mesh(new THREE.PlaneGeometry(300, 300), planeMaterial);
+    plane.position.y = 0;
+    plane.rotation.x = -Math.PI / 2;
+    plane.doubleSided = true;
+    scene.add(plane);
 
     if (vrmgr.isVRMode()) {
         effect.render(scene, camera);
@@ -56,7 +68,7 @@
     animate();
     // Customize camera move behavior to use WASD for navigation
     document.onkeydown = function (e) {
-        if (e.keyCode == 87) { // Move forward incrementally with W
+        if (e.keyCode == 87 ) { // Move forward incrementally with W
             camera.translateZ(-.1);
         }
         else if(e.keyCode == 65) { //Move left incrementally with A
@@ -67,6 +79,11 @@
         }
         else if (e.keyCode == 83) { //Move back incrementally with S
             camera.translateZ(.1);
+        }
+
+        if(camera.position.y < 0)
+        {
+            camera.position.y = 1;
         }
     }
 }
