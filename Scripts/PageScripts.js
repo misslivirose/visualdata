@@ -6,7 +6,6 @@
     document.body.appendChild(canvas);
 
     var scene = new THREE.Scene();
-
     // Create a three.js camera
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.3, 10000);
     var controls = new THREE.VRControls(camera);
@@ -29,8 +28,9 @@
             var material = new THREE.MeshNormalMaterial();
             var cube = new THREE.Mesh(geometry, material);
             cube.position.z = -10;
-            cube.position.x = i * 2;
-            cube.position.y = (data_set[yValKey]*.01)/2;
+            cube.position.x = i*2 - numObjects;
+            cube.position.y = (data_set[yValKey] * .01) / 2;
+
             // Add cube mesh to your three.js scene
             scene.add(cube);
         };
@@ -71,16 +71,3 @@
     }
 }
 
-function onSelect(item)
-{
-    switch(item)
-    {
-        case "cities":
-            //call on sampledata.xlsx
-            break;
-        case "womenInTech":
-            //call on uploadsample.xlsx
-            break;
-    }
-
-}
