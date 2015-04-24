@@ -11,6 +11,7 @@
     <script src ="Scripts\PageScripts.js"></script>
     <!-- For drawing elements -->
     <script src ="Scripts\three.min.js"></script>
+    <script src ="Scripts\CSS3DObject.js"></script>
     <!-- For positional information from VR hardware -->
     <script src ="Scripts\VRControls.js"></script>
     <!-- Camera Rendering -->

@@ -1,19 +1,19 @@
 ﻿function PaintCanvas(string) {
-    var renderer = new THREE.WebGLRenderer({ antialias: true });
+    var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setClearColor("white", 0);
     renderer.setPixelRatio(window.devicePixelRatio);
 
     var canvas = renderer.domElement;
     document.body.appendChild(canvas);
 
     var scene = new THREE.Scene();
-    // Create a three.js camera
-    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.3, 10000);
+
+    // Create a three.js camera with the VR Device Manager
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.3, 1000);
     camera.position.y = 1;
     var controls = new THREE.VRControls(camera);
-
     var effect = new THREE.VREffect(renderer);
     effect.setSize(window.innerWidth, window.innerHeight);
-
     var vrmgr = new WebVRManager(effect);
 
     // Create 3d objects based on the passed in data
@@ -43,6 +43,7 @@
             textLabel.innerHTML = data_set[xValKey];
             textLabel.style.color = "0x020307";
             textLabel.style.top = "500px";
+            //TODO: Replace with xy coords for graph
             textLabel.style.left = 100 + 150*i + "px";
             document.body.appendChild(textLabel);
         };
@@ -60,10 +61,40 @@
     plane.doubleSided = true;
     scene.add(plane);
 
+    /** 
+    * Attempt to render VR-friendly text labels by creating a secondary canvas for the text that will
+    * sync with the underlying one
+    **/
+
+    var cssScene = new THREE.Scene();
+
+    var _labelMat = new THREE.MeshBasicMaterial({ wireframe: true });
+    var _labelGeo = new THREE.PlaneGeometry();
+    var _labelMesh = new THREE.Mesh(_labelGeo, _labelMat);
+    _labelMesh.position.set(5, 5, 5);
+    scene.add(_labelMesh);
+
+    var element = document.createElement('img');
+    element.src = '\Resources\\STB13_WindMill_01.png';
+
+    var cssObject = new THREE.CSS3DObject(element);
+    cssObject.position = _labelMesh.position;
+    cssObject.rotation = _labelMesh.rotation;
+    cssScene.add(cssObject);
+    
+    var cssRenderer = new THREE.CSS3DRenderer();
+    cssRenderer.setSize(window.innerWidth, window.innerHeight);
+    cssRenderer.domElement.style.position = 'absolute';
+    cssRenderer.domElement.style.top = 0;
+    cssRenderer.domElement.id = "CSS Renderer";
+    document.body.appendChild(cssRenderer.domElement); 
+
     if (vrmgr.isVRMode()) {
         effect.render(scene, camera);
+        effect.render(cssScene, camera);
     } else {
         renderer.render(scene, camera);
+        cssRenderer.render(cssScene, camera);
     }
     function animate() {
         // Update VR headset position and apply to camera.
