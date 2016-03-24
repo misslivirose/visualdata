@@ -19,6 +19,8 @@
     <script src ="Scripts\webvr-polyfill.js"></script>
     <!-- VR enter/exit, consistency for webvr apps -->
     <script src="Scripts\webvr-manager.js"></script>
+        <script src="Scripts\Orbitron_Regular.js"></script>
+
     <script>
         var string = JSON.stringify(<%=_graphJSON%>);
         $(document).ready(function () { PaintCanvas(string) });

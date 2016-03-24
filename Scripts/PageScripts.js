@@ -24,16 +24,34 @@
         function createCube() {
             var data_set = obj.rows[i];
             var keys = Object.keys(data_set);
-            var yValKey = keys[1];
+            var nameValKey = keys[0]; // "Object"
+            var yValKey = keys[1]; // "Data"
+
+
+            var nameOfData = data_set[nameValKey];
+           
+            // Create the data cube
             var geometry = new THREE.BoxGeometry(1, data_set[yValKey] * .01, 1);
             var material = new THREE.MeshNormalMaterial();
             var cube = new THREE.Mesh(geometry, material);
             cube.position.z = -10;
-            cube.position.x = i*2 - numObjects;
+            cube.position.x = i*5 - numObjects;
             cube.position.y = (data_set[yValKey] * .01) / 2;
 
+            // Create the name text
+            var textGeometry = new THREE.TextGeometry(nameOfData, { font: 'orbitron', size: .3, height: .1 });
+            
+            var textMesh = new THREE.Mesh(textGeometry, material);
+            textMesh.position.z = -9;
+            textMesh.position.y = 0.001;
+            textMesh.position.x = cube.position.x -1;
+            
+
+            console.log(nameOfData);;
+            
             // Add cube mesh to your three.js scene
             scene.add(cube);
+            scene.add(textMesh);
         };
         createCube(i);
     }
