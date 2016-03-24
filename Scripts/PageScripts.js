@@ -40,8 +40,8 @@
 
             // Create the name text
             var textGeometry = new THREE.TextGeometry(nameOfData, { font: 'orbitron', size: .3, height: .1 });
-            
-            var textMesh = new THREE.Mesh(textGeometry, material);
+            var textmat = new THREE.MeshPhongMaterial({ color: "#000" });
+            var textMesh = new THREE.Mesh(textGeometry, textmat);
             textMesh.position.z = -9;
             textMesh.position.y = 0.001;
             textMesh.position.x = cube.position.x -1;
